@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notflix</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -14,9 +13,9 @@
                 <img src="Netflix.png" alt="Notflix Logo" class="logo-image">
             </div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+                <li><a class="nav-disabled" aria-disabled="true" tabindex="-1" title="Not available">About</a></li>
                 <li><a href="#explore">Explore</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a class="nav-disabled" aria-disabled="true" tabindex="-1" title="Not available">Contact Us</a></li>
             </ul>
         </div>
     </nav>
@@ -30,6 +29,26 @@
             </div>
         </div>
     </section>
+    <section id="explore" class="explore-section">
+        <div class="explore-container">
+            <h2>Explore</h2>
 
+            <form id="search-form" class="search-form" role="search" aria-label="Search movies">
+                <input id="search-input" class="search-input" type="search" placeholder="Search movies, e.g. Inception" aria-label="Search query">
+                <button type="submit" class="btn search-btn">Search</button>
+            </form>
+
+            <div id="loading" class="loading" aria-hidden="true">Loading...</div>
+            <div id="results" class="results-grid" aria-live="polite"></div>
+
+            <div class="pagination" aria-label="Pagination">
+                <button id="prev-page" class="btn" disabled>Prev</button>
+                <span id="page-info" class="page-info">Page 1</span>
+                <button id="next-page" class="btn" disabled>Next</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
 </body>
 </html>
