@@ -7,12 +7,26 @@
     font-family: 'Roboto', sans-serif;
 }
 
+/* Page background: show the hero image behind the navbar and cover the whole document */
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url('Background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #0f0f0f; /* fallback color */
+}
+
 .navbar {
-    background-color: rgb(15, 15, 15);
+    background-color: transparent;
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 30;
 }
 
 .navbar-container {
@@ -44,6 +58,7 @@
     font-size: 1.1rem;
     position: relative;
     padding-bottom: 5px;
+    transition: color 0.18s ease;
 }
 
 .nav-links a::after {
@@ -63,4 +78,93 @@
 
 .nav-links a:hover {
     color: red;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .logo-image {
+        height: 56px;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+    }
+}
+
+/* HERO/BANNER */
+.hero {
+    position: relative;
+    /* background now lives on the page body so it shows behind the navbar */
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    width: 100%;
+    min-height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45));
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    color: #e6e6e6;
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    margin-bottom: 1rem;
+}
+
+.hero-cta {
+    display: inline-block;
+    background: #e50914;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.12s ease, opacity 0.2s ease, transform 0.15s ease;
+}
+
+.hero-cta:hover {
+    opacity: 0.95;
+    transform: translateY(-2px);
+}
+
+/* darker shade when clicked/activated for tactile feedback */
+.hero-cta:active,
+.hero-cta:focus-visible {
+    background-color: #b20710;
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 44vh;
+    }
+    .hero-overlay {
+        min-height: 44vh;
+    }
+    .hero-content { padding: 2rem 1rem; }
+}
+
+/* On small screens, avoid `background-attachment: fixed` for performance and better UX */
+@media (max-width: 900px) {
+    body {
+        background-attachment: scroll;
+    }
 }
