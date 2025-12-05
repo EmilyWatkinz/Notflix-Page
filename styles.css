@@ -49,6 +49,7 @@ body {
     list-style: none;
     display: flex;
     gap: 6rem;
+    font-weight: bold;
 }
 
 .nav-links a {
@@ -304,5 +305,247 @@ body {
 @media (max-width: 900px) {
     body {
         background-attachment: scroll;
+    }
+}
+
+@media (max-width: 728px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-container {
+        max-width: 100%;
+    }
+
+    .logo-image {
+        height: 52px;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+    }
+
+    .hero {
+        min-height: 50vh;
+    }
+
+    .hero-overlay {
+        min-height: 50vh;
+    }
+
+    .hero-content {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.75rem, 4vw, 3rem);
+        margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+
+    .hero-cta {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+
+
+    .explore-section {
+        padding: 2.5rem 1rem 5rem;
+    }
+
+    .explore-container {
+        padding: 0 1rem;
+    }
+
+    .explore-container h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .search-form {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .search-input {
+        width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+
+    
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .page-info {
+        order: 3;
+        width: 100%;
+        text-align: center;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .movie-card img {
+        height: 220px;
+    }
+
+    .movie-card .meta {
+        padding: 0.6rem;
+    }
+
+    .movie-card .title {
+        font-size: 0.95rem;
+    }
+
+    .movie-card .year {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .navbar-container {
+        max-width: 100%;
+    }
+
+    .logo-image {
+        height: 48px;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        padding-bottom: 3px;
+    }
+
+    .hero {
+        min-height: 45vh;
+    }
+
+    .hero-overlay {
+        min-height: 45vh;
+    }
+
+    .hero-content {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+        margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-cta {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .explore-section {
+        padding: 2rem 0.75rem 4rem;
+    }
+
+    .explore-container {
+        padding: 0 0.75rem;
+    }
+
+    .explore-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .search-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.45rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .search-input::placeholder { font-size: 0.85rem; }
+
+    .search-btn {
+        width: 100%;
+        padding: 0.45rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .pagination .btn {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .page-info {
+        order: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.6rem;
+    }
+
+    .movie-card {
+        border-radius: 6px;
+    }
+
+    .movie-card img {
+        height: 190px;
+    }
+
+    .movie-card .meta {
+        padding: 0.5rem;
+    }
+
+    .movie-card .title {
+        font-size: 0.9rem;
+    }
+
+    .movie-card .year {
+        font-size: 0.8rem;
+    }
+
+    .loading {
+        font-size: 0.9rem;
     }
 }
