@@ -33,10 +33,21 @@
         <div class="explore-container">
             <h2>Explore</h2>
 
-            <form id="search-form" class="search-form" role="search" aria-label="Search movies">
-                <input id="search-input" class="search-input" type="search" placeholder="Search movies, e.g. Inception" aria-label="Search query">
-                <button type="submit" class="btn search-btn">Search</button>
-            </form>
+            <div class="search-filter-row">
+                <form id="search-form" class="search-form" role="search" aria-label="Search movies">
+                    <input id="search-input" class="search-input" type="search" placeholder="Search movies, e.g. Inception" aria-label="Search query">
+                    <button type="submit" class="btn search-btn">Search</button>
+                </form>
+
+                <div class="filter-controls" aria-label="Filter movies">
+                    <label for="sort-year" class="visually-hidden">Sort by year</label>
+                    <select id="sort-year" class="sort-select" aria-label="Sort by year">
+                        <option value="sort">Sort</option>
+                        <option value="oldest">Oldest to Newest</option>
+                        <option value="newest">Newest to Oldest</option>
+                    </select>
+                </div>
+            </div>
 
             <div id="loading" class="loading" aria-hidden="true">Loading...</div>
             <div id="results" class="results-grid" aria-live="polite"></div>

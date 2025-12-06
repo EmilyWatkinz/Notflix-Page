@@ -186,15 +186,18 @@ body {
     gap: 0.5rem;
     margin-bottom: 1rem;
     align-items: center;
+    justify-content: flex-start; /* keep the form left-aligned */
 }
 
 .search-input {
-    flex: 1 1 320px;
+    /* make the input shorter on wide screens, but allow it to grow where needed */
+    flex: 0 0 280px;
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
     border: 1px solid rgba(0,0,0,0.12);
     background: #fff;
     color: #111;
+    min-width: 140px;
 }
 
 .search-input::placeholder { color: #6b6b6b; }
@@ -214,9 +217,58 @@ body {
     cursor: pointer;
 }
 
+.search-btn { flex: 0 0 auto; }
+
+/* layout for search + filter on the same row */
+.search-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    justify-content: space-between; /* keep search left, filter right */
+}
+
+.filter-controls {
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.sort-select {
+    background: #fff;
+    color: #111;
+    border-radius: 6px;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid rgba(0,0,0,0.12);
+}
+
+.filter-controls { min-width: 420px; }
+.sort-select { min-width: 160px; }
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
 .btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+
+.search-btn {
+    transition: background-color 0.12s ease, transform 0.12s ease, opacity 0.12s ease;
+}
+
+.search-btn:active,
+.search-btn:focus-visible {
+    background-color: #b20710; 
+    transform: translateY(1px) scale(0.996);
 }
 
 .pagination {
@@ -373,6 +425,7 @@ body {
     .search-form {
         flex-direction: column;
         gap: 0.75rem;
+        width: 100%;
     }
 
     .search-input {
@@ -383,6 +436,9 @@ body {
     .search-btn {
         width: 100%;
     }
+
+    .search-filter-row { flex-direction: column; align-items: stretch; }
+    .filter-controls { margin-left: 0; justify-content: flex-start; min-width: auto; }
 
     
     .pagination {
@@ -550,7 +606,6 @@ body {
     }
 }
 
-/* Footer */
 .site-footer {
     background: rgba(0,0,0,0.55);
     color: #fff;
@@ -608,7 +663,7 @@ body {
 
 .footer-link:hover { color: #e50914; }
 
-/* Footer disabled state: show not-allowed cursor on hover but keep underline animation */
+
 .footer-link.footer-disabled {
     color: #fff;
     opacity: 1;
@@ -616,7 +671,7 @@ body {
 
 .footer-link.footer-disabled:hover {
     cursor: not-allowed;
-    color: #e50914; /* match footer hover color */
+    color: #e50914; 
 }
 
 @media (max-width: 600px) {

@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	let currentPage = 1;
 	let totalResults = 0;
 	let totalPages = 1;
+	let lastResults = [];
+	const sortSelect = document.getElementById('sort-year');
 
 	async function fetchMovies(query = currentQuery, page = 1) {
 		currentQuery = query;
@@ -27,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (data && data.Response === 'True' && Array.isArray(data.Search)) {
 				totalResults = parseInt(data.totalResults || '0', 10) || 0;
 				totalPages = Math.max(1, Math.ceil(totalResults / 10));
-				renderResults(data.Search);
+				lastResults = Array.isArray(data.Search) ? data.Search.slice() : [];
+				applySortAndRender();
 			} else {
 				resultsEl.innerHTML = `<p>No results found for "${escapeHtml(query)}".</p>`;
 				totalResults = 0;
@@ -90,6 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
 		resultsEl.appendChild(frag);
 	}
 
+	function parseYear(item) {
+		if (!item || !item.Year) return 0;
+		const m = String(item.Year).match(/(\d{4})/);
+		return m ? parseInt(m[1], 10) : 0;
+	}
+
+	function applySortAndRender() {
+		resultsEl.innerHTML = '';
+		let toRender = lastResults.slice();
+		if (sortSelect) {
+			const val = sortSelect.value;
+			if (val === 'newest') {
+				toRender.sort((a,b) => parseYear(b) - parseYear(a));
+			} else if (val === 'oldest') {
+				toRender.sort((a,b) => parseYear(a) - parseYear(b));
+			}
+		}
+		renderResults(toRender);
+	}
+
 	function updatePagination() {
 		pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
 		prevBtn.disabled = currentPage <= 1;
@@ -141,7 +164,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	// Back to top handler
+	// handle sort select changes (re-render current page results)
+	if (sortSelect) {
+		sortSelect.addEventListener('change', () => {
+			applySortAndRender();
+		});
+	}
+
+
+
 	const backToTopBtn = document.querySelector('.back-to-top');
 	if (backToTopBtn) {
 		backToTopBtn.addEventListener('click', () => {
