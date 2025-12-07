@@ -186,11 +186,10 @@ body {
     gap: 0.5rem;
     margin-bottom: 1rem;
     align-items: center;
-    justify-content: flex-start; /* keep the form left-aligned */
+    justify-content: flex-start; 
 }
 
 .search-input {
-    /* make the input shorter on wide screens, but allow it to grow where needed */
     flex: 0 0 280px;
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
@@ -219,13 +218,12 @@ body {
 
 .search-btn { flex: 0 0 auto; }
 
-/* layout for search + filter on the same row */
 .search-filter-row {
     display: flex;
     align-items: center;
     gap: 1rem;
     width: 100%;
-    justify-content: space-between; /* keep search left, filter right */
+    justify-content: space-between; 
 }
 
 .filter-controls {

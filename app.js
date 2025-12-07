@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	// handle sort select changes (re-render current page results)
+
 	if (sortSelect) {
 		sortSelect.addEventListener('change', () => {
 			applySortAndRender();
